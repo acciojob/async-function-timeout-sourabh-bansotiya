@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded',() => {
 	function delayFunction(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
+	function clearOutputDiv() {
+        return new Promise(resolve => {
+            outputDiv.textContent = "";
+            resolve();
+        });
+    }
 });
 // 	outDiv.innerHTML = " ";
 
