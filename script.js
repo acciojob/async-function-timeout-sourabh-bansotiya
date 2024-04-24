@@ -1,22 +1,48 @@
 //your JS code here. If required.
-document.getElementById("btn").addEventListener("click", function(){
-	var text1 = document.getElementById("text").value;
-	var outDiv = document.getElementById("output");
+document.addEventListener('DOMContentLoaded',() => {
+	const textInput = document.getElementById("text");
+	const delayInput = document.getElementById("delay");
+	const outDiv = document.getElementById("output");
+	const btn = document.getElementById('btn');
 
-	outDiv.innerHTML = " ";
+	btn.addEventListener('click', async() => {
+		const text = textInput.value;
+		const delay = parseInt(delayInput.value);
 
-	setTimeout(function(){
-		outDiv.innerText = text1;
-	},1000);
-})
+		if(!text || isNaN(delay)){
+			outDiv.textContent = "please enter valid text";
+			return;
+		}
 
-document.getElementById("btn").addEventListener("click", function(){
-	var text2 = document.getElementById("delay").value;
-	var outDiv = document.getElementById("output");
+		outDiv.textContent = "Waiting...";
 
-	outDiv.innerHTML = " ";
+		await delayFunction(delay);
+		outDiv.textContent = text;
+	});
 
-	setTimeout(function(){
-		outDiv.innerText = text2;
-	},2000);
-})
+	function delayFunction(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+});
+// 	outDiv.innerHTML = " ";
+
+// 	await delayFunction(delay);
+
+// 	outDiv.innerText = text;
+
+// });
+
+// async function delayFunction(delay){
+// 	await new Promise(resolve => setTimeout(resolve, delay));
+// }
+
+// document.getElementById("btn").addEventListener("click", function(){
+// 	var text2 = document.getElementById("delay").value;
+// 	var outDiv = document.getElementById("output");
+
+// 	outDiv.innerHTML = " ";
+
+// 	setTimeout(function(){
+// 		outDiv.innerText = text2;
+// 	},2000);
+// })
