@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded',() => {
 
 		outDiv.textContent = "Waiting...";
 
+     await.clearOutputDiv();
+		
 		await delayFunction(delay);
 		outDiv.textContent = text;
 	});
