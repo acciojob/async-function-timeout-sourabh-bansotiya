@@ -1,56 +1,29 @@
-//your JS code here. If required.
-document.addEventListener('DOMContentLoaded',() => {
-	const textInput = document.getElementById("text");
-	const delayInput = document.getElementById("delay");
-	const outDiv = document.getElementById("output");
-	const btn = document.getElementById('btn');
+// //your JS code here. If required.
+// const text = document.getElementById("text").value;
+// const number = document.getElementById("delay").value;
+// const btn = document.getElementById("btn");
 
-	btn.addEventListener('click', async() => {
-		const text = textInput.value;
-		const delay = parseInt(delayInput.value);
-
-		if(!text || isNaN(delay)){
-			outDiv.textContent = "please enter valid text";
-			return;
-		}
-
-		outDiv.textContent = "Waiting...";
-
-     await.clearOutputDiv();
-		
-		await delayFunction(delay);
-		outDiv.textContent = text;
-	});
-
-	function delayFunction(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
-	function clearOutputDiv() {
-        return new Promise(resolve => {
-            outputDiv.textContent = "";
-            resolve();
-        });
-    }
-});
-// 	outDiv.innerHTML = " ";
-
-// 	await delayFunction(delay);
-
-// 	outDiv.innerText = text;
-
-// });
-
-// async function delayFunction(delay){
-// 	await new Promise(resolve => setTimeout(resolve, delay));
+// btn.addEventListener('click', function(){
+// async function msgDelay(){
+//     await new Promise ((r) => setTimeout(r, 1000));
+//     console.log(${text});
+//     await new Promise ((r) => setTimeout(r, 2000));
+//     console.log(${number});
 // }
+// 	})
 
-// document.getElementById("btn").addEventListener("click", function(){
-// 	var text2 = document.getElementById("delay").value;
-// 	var outDiv = document.getElementById("output");
+const btn = document.getElementById("btn");
 
-// 	outDiv.innerHTML = " ";
+btn.addEventListener('click', async function(){
+    const text = document.getElementById("text").value;
+    const delay = document.getElementById("delay").value;
 
-// 	setTimeout(function(){
-// 		outDiv.innerText = text2;
-// 	},2000);
-// })
+    async function msgDelay() {
+        await new Promise ((r) => setTimeout(r, 1000));
+        document.getElementById("output").innerText = `${text}`;
+		await new Promise ((r) => setTimeout(r, 2000));
+        document.getElementById("output").innerText = `${delay}`;
+    }
+
+    msgDelay();
+});
